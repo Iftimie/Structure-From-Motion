@@ -58,7 +58,9 @@ while(1):
         frame = cv2.circle(frame,(a,b),5,color[i].tolist(),-1)
     img = cv2.add(frame,mask)
     cv2.imshow('frame',img)
-    k = cv2.waitKey(10) & 0xff
+    if x==1:
+        k = cv2.waitKey(5000) & 0xff
+    k = cv2.waitKey(100) & 0xff
     if k == 27:
         break
     # Now update the previous frame and previous points
