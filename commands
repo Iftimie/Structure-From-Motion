@@ -1,0 +1,14 @@
+for i in range(1,9):
+    kp2, des2 = surf.detectAndCompute(images[i], None)
+    matches = bf.match(des1,des2)
+    matches = sorted(matches, key = lambda x:x.distance)
+    img3 = cv2.drawMatches(images[i-1], kp1, images[i], kp2, matches[:200], None, flags=2)
+    cv2.imshow("sdfsd"+str(i), img3)
+    cv2.waitKey(1000)
+    kp1_  = []
+    des1_ = []
+    for j in range(200):
+        kp1_.append(kp2[matches[j].trainIdx])
+        des1_.append(des2[matches[j].trainIdx])
+    kp1 = kp1_
+    des1 = np.array(des1_)
